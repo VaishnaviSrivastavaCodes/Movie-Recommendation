@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>Movie recommendation</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body style="background-image:url({% static "image/bg.jpg" %})">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+                <a class="navbar-brand text-white mb-0 h1" href="/">The Cinema Geek</a>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search">Search</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="jumbotron text-center">
+            <div class="container"></div>
+                <h1 class="font-bold"  style =" font-family: Times New Roman">The Cinema Geek</h1>
+                <p class = "text-center" style ="font-family: 'Pacifico';font-size: 22px;"></p>Enter the name of a movie you like , and you'll get movie recommendations. </p><br>
+                <a href="/search" class="btn btn-outline-dark">Start looking!</a>
+            </div>
+        </div>
+    </body>
+</html>

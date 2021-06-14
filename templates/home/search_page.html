@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>Search</title>
+        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body style="background-image:url({% static "image/bg.jpg" %})">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+                <a class="navbar-brand text-white mb-0 h1" href = "/">The Cinema Geek</a>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search">Search</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="jumbotron text-center">
+            <div class="container">
+                <form method="POST">
+                    {{form.as_p}}
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </form>
+            </div>
+            {% if flag == False %}
+            <p> Sorry! The movie you requested is not in our database. Please check the spelling or try with some other movies.</p>
+        
+               
+               {% else %}
+               
+                <div class="row mx-auto mt-3">
+                  {% for i in r_dict %}
+                  <div class="card mx-auto mb-4" style="width: 15rem;">
+                    <img src="{{i}}" class="card-img-top" alt="...">
+                
+                     </div>
+                    
+                    
+                    
+                    {% endfor %}
+                {% endif %}
+            
+        </div>
+    </body>
+</html>
