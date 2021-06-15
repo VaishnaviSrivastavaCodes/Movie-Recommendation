@@ -30,7 +30,7 @@ SECRET_KEY = '6d90__0@oua1fg#szuj@8^8bec1vh!)7t--as$m(-7-!i32wy='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['movies-vaishnavi.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['movies-vaishnavi-1.herokuapp.com','127.0.0.1']
 
 
 # Application definition
