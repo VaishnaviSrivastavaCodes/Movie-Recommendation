@@ -30,7 +30,7 @@ SECRET_KEY = '6d90__0@oua1fg#szuj@8^8bec1vh!)7t--as$m(-7-!i32wy='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['movies-vaishnavi.herokuapp.com']
+ALLOWED_HOSTS = ['movies-vaishnavi.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,13 +124,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-# STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     'static'
-# ]
-# STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+######## Was working ######
+# STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+# STATICFILES_DIRS = (
+#     os.path.join(os.path.dirname(BASE_DIR),"Movie-Recommendation","static"),
+# )
+# django_heroku.settings(locals())
+
+####################################
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_TMP = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
+os.makedirs(STATIC_TMP, exist_ok=True)
+os.makedirs(STATIC_ROOT, exist_ok=True)
+
 STATICFILES_DIRS = (
-    os.path.join(os.path.dirname(BASE_DIR),"Movie-Recommendation","static"),
+os.path.join(BASE_DIR, 'static'),
 )
-django_heroku.settings(locals())
